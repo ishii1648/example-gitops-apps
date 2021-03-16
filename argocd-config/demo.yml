@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    repoURL: https://github.com/ishii1648/example-gitops-apps.git
     targetRevision: main
     path: demo
   destination:
