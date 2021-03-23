@@ -1,7 +1,5 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Rollout
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: bluegreen-demo
   labels:
@@ -26,8 +24,8 @@ spec:
           containerPort: 8080
           protocol: TCP
         resources: {}
-  # strategy:
-  #   blueGreen:
-  #     autoPromotionEnabled: false
-  #     activeService: bluegreen-demo
-  #     previewService: bluegreen-demo-preview
+  strategy:
+    blueGreen:
+      autoPromotionEnabled: false
+      activeService: bluegreen-demo
+      previewService: bluegreen-demo-preview
