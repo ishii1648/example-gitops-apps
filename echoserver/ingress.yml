@@ -5,6 +5,8 @@ metadata:
   namespace: default
   annotations:
     kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/server-snippet: |
+      proxy_set_header Host ishii.ga;
 spec:
   rules:
   - host: echo.ishii.ga
