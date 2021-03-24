@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: bluegreen-demo-preview
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # nginx.ingress.kubernetes.io/server-snippet: |
+    #     if ($http_user_agent ~* "(bulue-green-test)" ){
+    #       set $service_name   "bluegreen-demo-preview";
+    #       set $service_port   "http";
+    #     }
+spec:
+  rules:
+  - host: preview-bluegreen-demo.ishii.ga
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: bluegreen-demo-preview
+          servicePort: http
