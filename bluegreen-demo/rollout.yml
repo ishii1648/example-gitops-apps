@@ -26,7 +26,14 @@ spec:
         resources: {}
   strategy:
     blueGreen:
-      autoPromotionEnabled: false
+      # autoPromotionEnabled: false
+      autoPromotionEnabled: true
       activeService: bluegreen-demo
       previewService: bluegreen-demo-preview
       scaleDownDelaySeconds: 30
+      postPromotionAnalysis:
+        templates:
+        - templateName: success-rate
+          args:
+          - name: ingress
+            value: bluegreen-demo
