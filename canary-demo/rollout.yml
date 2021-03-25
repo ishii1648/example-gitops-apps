@@ -8,6 +8,22 @@ spec:
   selector:
     matchLabels:
       app: canary-demo
+  strategy:
+    canary:
+      analysis:
+        templateName: success-rate
+        args:
+        - name: ingress
+          value: canary-demo
+      steps:
+      - setWeight: 20
+      - pause: {duration: 10}
+      - setWeight: 40
+      - pause: {duration: 10}
+      - setWeight: 60
+      - pause: {duration: 10}
+      - setWeight: 80
+      - pause: {duration: 10}
   template:
     metadata:
       labels:
@@ -23,14 +39,3 @@ spec:
           protocol: TCP
         resources:
           requests: {}
-  strategy:
-    canary:
-      steps:
-      - setWeight: 20
-      - pause: {duration: 10}
-      - setWeight: 40
-      - pause: {duration: 10}
-      - setWeight: 60
-      - pause: {duration: 10}
-      - setWeight: 80
-      - pause: {duration: 10}
