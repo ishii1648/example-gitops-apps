@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: echoserver
-  namespace: argocd
+  name: guestbook
+  namespace: default
 spec:
   project: default
   source:
-    repoURL: https://github.com/ishii1648/example-gitops-apps.git
-    targetRevision: main
-    path: echoserver
+    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    targetRevision: master
+    path: guestbook
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
