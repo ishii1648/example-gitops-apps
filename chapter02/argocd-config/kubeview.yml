@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/benc-uk/kubeview.git
     targetRevision: 0.1.20
-    path: charts
+    path: charts/kubeview
   destination:
     server: https://kubernetes.default.svc
     namespace: kubeview
