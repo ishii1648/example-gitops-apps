@@ -2,8 +2,6 @@
 
 This is demo codes about Blue/Green Deployment using Argo Rollouts.
 
-## Demo
-
 ## Usage
 
 ### Install
@@ -15,8 +13,8 @@ $ kubectl apply -f argocd-config.yml
 add following IP & Host with your `/etc/hosts`
 
 ```
-35.236.164.44 blue-green-preview.dev.argoproj.io
-35.236.164.44 blue-green.dev.argoproj.io
+<IP of LB> blue-green-preview.dev.argoproj.io
+<IP of LB> blue-green.dev.argoproj.io
 ```
 
 ### Change Container Image
@@ -29,4 +27,10 @@ $ kubectl argo rollouts set image bluegreen-demo bluegreen-demo=argoproj/rollout
 
 ```bash
 $ kubectl argo rollouts promote bluegreen-demo
+```
+
+### Watch progress
+
+```bash
+$ kubectl argo rollouts get rollout bluegreen-demo --watch
 ```
